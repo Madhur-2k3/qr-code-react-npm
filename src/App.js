@@ -39,29 +39,33 @@ function App() {
   }
 
   return (
-    <>
-      <form onSubmit={SubmitHandler} className="flex justify-center gap-8 py-5">
-        <input
-          type="text"
-          placeholder='Enter Roll Number'
-          required
-          className={`border ${isValid ? 'border-black' : 'border-red-500'} rounded-md`}
-          onChange={(e)=>{setText(e.target.value); setIsValid(true);}}
-        />
-        <input type="submit" className="bg-blue-400 w-fit px-2 py-1 rounded-md"/>
-      </form>
-    
-      <img id="image" className="h-72 w-72 mx-auto "
-        //  src={''|| url}
-        
-      />
+    <div className='h-[100vh] bg-blue-100'>
+      <div className=' bg-slate-500 text-center h-12 flex justify-center items-center font-semibold text-lg'>QR Generator</div>
+
+      <div className=' '>
+        <form onSubmit={SubmitHandler} className="flex justify-center gap-8 py-10">
+          <input
+            type="text"
+            placeholder='Enter Roll Number'
+            required
+            autoComplete='true'
+            className={`border ${isValid ? 'border-black' : 'border-red-500'} rounded-md`}
+            onChange={(e)=>{setText(e.target.value); setIsValid(true);}}
+          />
+          <input type="submit" className="bg-blue-400 w-fit px-2 py-1 rounded-md"/>
+        </form>
       
-      <h1 id="h1" className="text-2xl text-center"></h1>
-      <Toaster
-            position="top-center"
-            reverseOrder={true}
-      />
-    </>
+        <img id="image" className="h-72 w-72 mx-auto  "
+          //  src={''|| url}
+          src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='
+        />
+        
+        <h1 id="h1" className="text-2xl text-center py-3"></h1>
+        <Toaster position="top-center" reverseOrder={true}/>
+      </div>
+
+      
+    </div>
   );
 }
 
