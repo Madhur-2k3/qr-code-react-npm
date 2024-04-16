@@ -54,7 +54,7 @@ const Form = () => {
             placeholder='Enter Roll Number'
             required
             autoComplete='true'
-            className={`border ${isValid ? 'border-black' : 'border-red-500'} rounded-md`}
+            className={`border px-2 ${isValid ? 'border-black' : 'border-red-500'} rounded-md`}
             onChange={(e)=>{setText(e.target.value); setIsValid(true);}}
           />
           {/* <Link to={`/${text}`}> */}
