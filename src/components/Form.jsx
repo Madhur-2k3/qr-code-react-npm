@@ -1,14 +1,18 @@
 import React from 'react'
 // import './App.css';
+import { useNavigate } from "react-router-dom";
 
 import toast, { Toaster } from 'react-hot-toast';
 import QRCode from 'qrcode'
 import { useState } from "react";
 import Qr from './Qr';
+import { Link } from 'react-router-dom';
 // import Header from './components/Header';/
 
 
 const Form = () => {
+
+    // const navigate = useNavigate();
 
     const[text,setText]=useState('')
     const[isValid,setIsValid]=useState(true);
@@ -28,7 +32,7 @@ const Form = () => {
       }
   
       // If the entered text is a valid roll number, generate QR code and update text
-      QRCode.toDataURL(text)
+      QRCode.toDataURL(text,{ errorCorrectionLevel: 'H' })
         .then(url => {
           // const image=document.getElementById('image');
           // image.src=url;
@@ -38,6 +42,8 @@ const Form = () => {
         .catch(err => {
           console.error(err);
         });
+        // navigate(`/${text}`)
+        
       document.getElementById('h1').innerHTML=text;
     }  
   return (
@@ -51,7 +57,9 @@ const Form = () => {
             className={`border ${isValid ? 'border-black' : 'border-red-500'} rounded-md`}
             onChange={(e)=>{setText(e.target.value); setIsValid(true);}}
           />
-          <input type="submit" className="bg-blue-400 w-fit px-2 py-1 rounded-md"/>
+          {/* <Link to={`/${text}`}> */}
+          <input type="submit" className="text-gray-200 bg-gray-900 w-fit px-3 py-1 rounded-md"/>
+          {/* </Link> */}
         </form>
         <Qr url={url} text={text}/>
     </>

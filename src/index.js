@@ -1,8 +1,29 @@
 import React from 'react';
+import { createRoot } from 'react-dom/client'
 import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css';
 import App from './App';
+import Qr from './components/Qr';
+import Form from './components/Form';
 import reportWebVitals from './reportWebVitals';
+
+
+const router=createBrowserRouter([
+  {
+    path:'/',
+    element: <App/>,
+    children:[
+      {
+        path:'/:rollno',
+        element:<Qr/>,
+      },
+      
+    ],
+  },
+])
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
