@@ -24,7 +24,7 @@ const Form = () => {
       const rollNumberPattern = /^\d{4}-\d{2}-\d{3}-\d{3}$/;
   
       // Check if the entered text matches the roll number pattern
-      if (!rollNumberPattern.test(text)) {
+      if (!rollNumberPattern.test(text.trim())) {
         setIsValid(false);
         // alert("Invalid Roll Number")
         toast.error('Please enter a valid roll number (2451-XX-XXX-XXX)');
@@ -32,7 +32,7 @@ const Form = () => {
       }
   
       // If the entered text is a valid roll number, generate QR code and update text
-      QRCode.toDataURL(text,{ errorCorrectionLevel: 'H' })
+      QRCode.toDataURL(text.trim(),{ errorCorrectionLevel: 'H' })
         .then(url => {
           // const image=document.getElementById('image');
           // image.src=url;
